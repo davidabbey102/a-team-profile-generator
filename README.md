@@ -17,13 +17,20 @@ I was motivated to create this because with the ever evolving work force, busine
 * [Tests](#tests)
 * [Contact](#contact)
 ## Installation
+
 1. Node
-2. Inquirer
-3. Jest
+2. Inquirer (Should come pre-installed in this project, but if your system needs it, please install.)
+3. Jest (Should come pre-installed in this project, but if your system needs it, please install.)
 
 ## Usage
 
- To quickly and easily keep employee lists and necessary information up to date
+ To quickly and easily keep employee lists and necessary information up to date.
+
+ ![image](https://user-images.githubusercontent.com/90018131/137607958-05e09c50-6fca-45a5-810e-d434496f3d45.png)
+
+ ![image](https://user-images.githubusercontent.com/90018131/137607867-8d5db73a-3fb1-4732-9b98-beb4e815c7c0.png)
+
+ [![YOUTUBE VIDEO](https://img.youtube.com/vi/7WseOxl6KRc/0.jpg)](https://youtu.be/7WseOxl6KRc)
 
 ## Credits
 
@@ -42,4 +49,5 @@ Test folder included, just run 'node test'. Test are set to provide maximum resp
  This project is protected by MIT.
 
 ## Contact
-Any questions or comments may be directed to me by [email](davidabbey@earthlink.net). Or on my [GitHub page](https://github.com/davidabbey102).
+
+Any questions or comments may be directed to me by [email](davidabbey@earthlink.net), or on my [GitHub page](https://github.com/davidabbey102).
