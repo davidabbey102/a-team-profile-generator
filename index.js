@@ -1,8 +1,4 @@
-//Link to HTML generation
-const generateHtml = require('./util/generateHtml')
-
 //Link to employee classes
-// const Employee = require('./lib/Employee')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -11,40 +7,33 @@ const Intern = require('./lib/Intern')
 const fs = require('fs')
 const inquirer = require('inquirer')
 
-//Create an array named team to be pushed to with each members info for generate HTML to use to create profiles and a counter for how many team members have been entered just for fun with console log messages
+//Link to HTML generation
+const generateHtml = require('./util/generateHtml')
+
+//Create an array named team to be pushed to with each members info for generate HTML to use to create profiles
 const team = []
-const teamCount = 0
 
 //Adding employees functions. First gets which position employee fills, then directs to position specific functions based on answer
 const employeeData = () => {
     inquirer
         .prompt([
             {
-            type: 'list',
-            message: "What is the employee's position?",
-            name: 'position',
-            choices: ['Manager', 'Engineer', 'Intern']
-        },{
-            type: 'input',
-            message: "what if I add another prompt?",
-            name: 'tester',
-        }])
+                type: 'list',
+                message: "What is the employee's position?",
+                name: 'position',
+                choices: ['Manager', 'Engineer', 'Intern']
+            }])
         .then(ans => {
-            console.log("Hello")
-            switch (ans.position) {
-                case 'Manager':
-                    managerInfo()
-                    break
-                case 'Engineer':
-                    engineerInfo()
-                    break
-                default:
-                    internInfo()
-                    break
+            if (ans.position == 'Manager') {
+                managerInfo()
+            } else if (ans.position == 'Engineer') {
+                engineerInfo()
+            } else if (ans.position == 'Intern') {
+                internInfo()
             }
         })
 
-        .catch((err) => console.error(err));
+        .catch((err) => {console.error(err)});
 }
 
 const managerInfo = () => {
@@ -129,24 +118,20 @@ const internInfo = () => {
 }
 
 const moreEmployee = () => {
-    teamCount++
     inquirer.prompt([{
-        type: 'checkbox',
-        message: `You have entered ${teamCount} new employees. Do you have more employees to add?`,
+        type: 'list',
+        message: 'Do you have more employees to add?',
         name: 'more',
         choices: ['Yes', 'No']
     }]).then(ans => {
         if (ans.more === 'Yes') {
             employeeData()
         } else {
-            console.log(`You have entered ${teamCount} new employees.
-        --------------------------------------------
-        Generating team profile page.`)
-            fs.writeFile('./generated-html/index.html', generateHtml(team))
+            console.log(`Generating team profile page.`)
+            fs.writeFile('./dist/index.html', generateHtml(team), (err) =>
+            err ? console.log(err) : console.log('COMPLETE!!! Your team profile page file can be found in the dist folder.'))
         }
     })
 }
 
 employeeData()
-
-module.exports = index
