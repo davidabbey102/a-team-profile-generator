@@ -2,7 +2,7 @@
 const generateHtml = require('./util/generateHtml')
 
 //Link to employee classes
-const Employee = require('./lib/Employee')
+// const Employee = require('./lib/Employee')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -18,11 +18,16 @@ const teamCount = 0
 //Adding employees functions. First gets which position employee fills, then directs to position specific functions based on answer
 const employeeData = () => {
     inquirer
-        .prompt([{
+        .prompt([
+            {
             type: 'list',
             message: "What is the employee's position?",
             name: 'position',
-            choices: ['Manager', 'Engineer', 'Intern'],
+            choices: ['Manager', 'Engineer', 'Intern']
+        },{
+            type: 'input',
+            message: "what if I add another prompt?",
+            name: 'tester',
         }])
         .then(ans => {
             console.log("Hello")
@@ -37,7 +42,6 @@ const employeeData = () => {
                     internInfo()
                     break
             }
-
         })
 
         .catch((err) => console.error(err));
